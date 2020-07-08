@@ -26,6 +26,3 @@ namespace PhoneBookConsuleUI
 }
 
 
-//When this is all completed.
-//Save the user contacts to a file like JSON or a txt file.
-//Add a GUI(Graphical User Interface) to the project. (Easy) use win forms, or (hard) WPF > These are window applications. 

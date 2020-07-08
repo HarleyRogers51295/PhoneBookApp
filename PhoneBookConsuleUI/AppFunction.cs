@@ -72,18 +72,44 @@ namespace PhoneBookConsuleUI
         /***********************USER INFO****************************/
         public static void UserInformation()
         {
+
+            ObjectIDGenerator obj = new ObjectIDGenerator();
+            bool isFirstTime;
             
+
             Console.WriteLine("Your Information\n");
             foreach (UserInfo user in UserInfo.userInfo)
             {
+                long theID = obj.GetId(user, out isFirstTime);
                 Console.WriteLine($"Name: {user.FirstName} {user.LastName}\nPhone Number: {user.NumberFormatted}" +
                     $"\nAddress: {user.StreetAddress}\n{user.City}, {user.State} {user.Zip}\nBirthday: {user.BirthdayFormatted}\n");
+                Console.WriteLine($"User ID: {theID - 1}\n");
             }
-                      
+            string choice;
+            string[] updateUserInfo = { "(1) Update User Infor", "(2) Exit" };
+
+            do
+            {
+                Console.WriteLine("Do you want to (1) Update Your Information, (2) Go back");
+                updateUserInfo[0] = "1";
+                updateUserInfo[1] = "2";
+
+                choice = Console.ReadLine();
+
+                if (choice == updateUserInfo[0])
+                {
+                    UserInfoUpdate();
+                }
+            } while (choice != updateUserInfo[1]);
+
         }
         public static void UserInfoInput()
         {
+            ObjectIDGenerator obj = new ObjectIDGenerator();
+            bool isFirstTime;
             UserInfo user = new UserInfo();
+            long theID = obj.GetId(user, out isFirstTime);
+            
             Console.WriteLine("Enter All Fields");
             Console.WriteLine();
             Console.Write("Please enter your first name: ");
@@ -102,12 +128,37 @@ namespace PhoneBookConsuleUI
             user.Zip = Console.ReadLine();
             Console.Write("Please enter your birthday(Ex. 01012020): ");
             user.BirthdayFormatted = Console.ReadLine();
-
-           //UserInfo.userInfo1[0] = user;
+            Console.WriteLine($"User ID: {theID - 1}\n");
+            //UserInfo.userInfo1[0] = user;
 
             UserInfo.userInfo.Add(user);
         }
-
+        public static void UserInfoUpdate()
+        {
+            UserInfo user = new UserInfo();
+            Console.WriteLine("Update Contact: Enter Your ID Number");
+            int userInput = int.Parse(Console.ReadLine());
+            var userUpdate = UserInfo.userInfo[userInput];
+            Console.WriteLine("Enter All Fields");
+            Console.WriteLine();
+            Console.Write("Please enter your first name: ");
+            userUpdate.FirstName = Console.ReadLine();
+            Console.Write("Please enter your last name: ");
+            userUpdate.LastName = Console.ReadLine();
+            Console.Write("Please enter your 10 digit phone number: ");
+            userUpdate.NumberFormatted = Console.ReadLine();
+            Console.Write("Please enter your street address: ");
+            userUpdate.StreetAddress = Console.ReadLine();
+            Console.Write("Please enter your city: ");
+            userUpdate.City = Console.ReadLine();
+            Console.Write("Please enter your state: ");
+            userUpdate.State = Console.ReadLine();
+            Console.Write("Please enter your zip code: ");
+            userUpdate.Zip = Console.ReadLine();
+            Console.Write("Please enter your birthday(Ex. 01012020): ");
+            userUpdate.BirthdayFormatted = Console.ReadLine();
+            UserInfo.userInfo.Remove(user);
+        }
         /************************FAVORATES OUTPUT***************/
         public static void ListFaveContact()
         {
