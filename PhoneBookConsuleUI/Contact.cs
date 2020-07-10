@@ -17,12 +17,12 @@ namespace PhoneBookConsuleUI
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        private string _phoneNumber { get; set; }
+        private string _phoneNumber;
         public string StreetAddress { get; set; }
         public string City { get; set; }
         public string State { get; set; }
         public string Zip { get; set; }
-        private string _birthday { get; set; } 
+        private string _birthday; 
         public bool AddToFavorites { get; set; }
 
 

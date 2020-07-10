@@ -15,15 +15,15 @@ namespace PhoneBookConsuleUI
 
         public Favorite(string firstName, string lastName, string phoneNumber, string streetAdd, string city, string state, string zip, string birthdayDay, bool addToFavorites)
         {
-            this.FirstName = firstName;
-            this.LastName = lastName;
-            this.NumberFormatted = phoneNumber;
-            this.StreetAddress = streetAdd;
-            this.City = city;
-            this.State = state;
-            this.Zip = zip;
-            this.BirthdayFormatted = birthdayDay;
-            this.AddToFavorites = addToFavorites;
+            FirstName = firstName;
+            LastName = lastName;
+            NumberFormatted = phoneNumber;
+            StreetAddress = streetAdd;
+            City = city;
+            State = state;
+            Zip = zip;
+            BirthdayFormatted = birthdayDay;
+            AddToFavorites = addToFavorites;
         }
 
         

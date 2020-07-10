@@ -8,25 +8,19 @@ namespace PhoneBookConsuleUI
     {
         public static void WelcomeMessage()
         {
-            Console.WriteLine("Welcome to your new Contacts App!");
-            Console.WriteLine();
+            Console.WriteLine("Welcome to your new Contacts App!\n");
         }
         public static void EnterUserInfoNote()
         {
-            Console.WriteLine("Thank you for choosing My Contacts App!");
-            Console.WriteLine();
-            Console.WriteLine("Please enter your personal information.");
-            Console.WriteLine();
+            Console.WriteLine("Please enter your personal information.\n");
         }
         public static void FirstContactNote()
         {
-            Console.WriteLine("Now please create your first contact!");
-            Console.WriteLine();
+            Console.WriteLine("Now please create your first contact!\n");
         }
         public static void NoContacts()
         {
-            Console.WriteLine("No Contacts Yet");
-            Console.WriteLine();
+            Console.WriteLine("No Contacts Yet\n");
         }
         public static void InvalidEntry()
         {
@@ -34,8 +28,7 @@ namespace PhoneBookConsuleUI
         }
         public static void InvalidEntryBase()
         {
-            Console.WriteLine("Invalid Entry, Please Select Another Option.");
-            Console.WriteLine();
+            Console.WriteLine("Invalid Entry, Please Select Another Option.\n");
         }
     }
 }

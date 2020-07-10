@@ -43,15 +43,10 @@ namespace PhoneBookConsuleUI
 
                 if (choice == CreateOrExit[0])
                 {
-
                     AddContact();
-                    //Make generic answers for empty fields.
-                    //if something entered wrong, suggest they update their contact.
-                    //Make some protected.
                 }
                 else if (choice == CreateOrExit[1])
                 {
-
                     ListFaveContact();
                 }
                 else if (choice == CreateOrExit[2])
@@ -63,7 +58,6 @@ namespace PhoneBookConsuleUI
                     UserInformation();
                 }
                
-
             } while (choice != CreateOrExit[4]);
 
             
@@ -109,7 +103,6 @@ namespace PhoneBookConsuleUI
             bool isFirstTime;
             UserInfo user = new UserInfo();
             long theID = obj.GetId(user, out isFirstTime);
-            
             Console.WriteLine("Enter All Fields");
             Console.WriteLine();
             Console.Write("Please enter your first name: ");
@@ -129,14 +122,12 @@ namespace PhoneBookConsuleUI
             Console.Write("Please enter your birthday(Ex. 01012020): ");
             user.BirthdayFormatted = Console.ReadLine();
             Console.WriteLine($"User ID: {theID - 1}\n");
-            //UserInfo.userInfo1[0] = user;
-
             UserInfo.userInfo.Add(user);
         }
         public static void UserInfoUpdate()
         {
             UserInfo user = new UserInfo();
-            Console.WriteLine("Update Contact: Enter Your ID Number");
+            Console.WriteLine("Update Your Info: Enter Your ID Number");
             int userInput = int.Parse(Console.ReadLine());
             var userUpdate = UserInfo.userInfo[userInput];
             Console.WriteLine("Enter All Fields");
