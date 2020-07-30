@@ -1,0 +1,51 @@
+﻿@model Contact
+
+    <h3>@Model.FirstName @Model.LastName's Information </h3>
+
+<h2>Contacts</h2>
+<div style="display: block">
+    <a href="/Contact/CreateContact/">Create a New Contact</a>
+</div>
+
+
+<table class="table">
+    <tr>
+        <td>Contact ID</td>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Phone Number</td>
+        <td>Street Address</td>
+        <td>City</td>
+        <td>State</td>
+        <td>Zip Code</td>
+        <td>Birthday</td>
+        <td>Relation</td>
+    </tr>
+   
+    <tr>
+        <th>@Model.ID</th>
+        <td>@Model.FirstName</td>
+        <td>@Model.LastName</td>
+        <td>@Model.NumberFormatted</td>
+        <td>@Model.StreetAddress</td>
+        <td>@Model.City</td>
+        <td>@Model.State</td>
+        <td>@Model.Zip</td>
+        <td>@Model.BirthdayFormatted</td>
+        <td>@Model.CategoryID</td>
+   </tr>
+    
+</table>
+<div style="display: block">
+    <a href="/Contact/UpdateContact/@Model.ID">Update this Contact</a>
+</div>
+<div style="display: block">
+    @using (Html.BeginForm("DeleteContact", "Contact", "Post"))
+    {
+        <input type="hidden" asp-for="ID" value="@Model.ID" />
+        <input type="submit" onclick="return confirm('Are you sure?')" value="Delete this Contact" />
+    }
+</div>
+
+
+

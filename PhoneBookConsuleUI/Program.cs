@@ -6,6 +6,12 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Linq;
+using Microsoft.Data.Sqlite;
+using System.Data.SQLite;
+using System.Drawing.Printing;
+using System.Data;
+using Microsoft.Extensions.Configuration;
+using System.Configuration;
 
 namespace PhoneBookConsuleUI
 {
@@ -14,14 +20,17 @@ namespace PhoneBookConsuleUI
        
         static void Main(string[] args)
         {
+           
+        //   //This method runs the Into method form AppFunction
+        //   AppFunction.Intro();
+        //   //This method runs the Execute method form AppFunction
+        //   AppFunction.Execute();
 
-
-            AppFunction.Intro();
-        
-            AppFunction.Execute();
-            
+        //}
+        //private static string LoadConnectionString(string id = "Default")
+        //{
+        //    return ConfigurationManager.ConnectionStrings[id].ConnectionString;
         }
-        
 
     }
 }
@@ -47,3 +56,4 @@ namespace PhoneBookConsuleUI
  * turn true or false into Y or N. (use ToLower();)
  *
  */
+
