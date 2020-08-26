@@ -15,6 +15,7 @@ namespace ContactsListApp.Controllers
         public IActionResult Index()
         {
             var contacts = repo.GetAllContacts();
+           // var categories = repo.GetCategories();
             return View(contacts);
         }
         

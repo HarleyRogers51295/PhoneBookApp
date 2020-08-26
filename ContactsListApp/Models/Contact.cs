@@ -18,10 +18,14 @@ namespace ContactsListApp.Models
             public string State { get; set; }
             public string Zip { get; set; }
             private string _birthday;
-            public IEnumerable<Category> CategoryID { get; set; }
+
+        //public IEnumerable<DateTime> Birthday { get; set; }
+        //public IEnumerable<Date> Birthday { get; set; }
+        public IEnumerable<Category> CategoryID { get; set; }
+        public IEnumerable<Category> CategoryName { get; set; }
 
         //this formats the phone number
-            public string NumberFormatted
+            public string PhoneNumber
             {
                 get
                 {
@@ -33,32 +37,32 @@ namespace ContactsListApp.Models
                 }
             }
         //this formats the numbers for birthday
-            public string BirthdayFormatted
+        public string Birthday
+        {
+            get
             {
-                get
-                {
-                    return _birthday;
-                }
-                set
-                {
-                    _birthday = Regex.Replace($"{value}", @"(\d{2})(\d{2})(\d{4})", "$1/$2/$3");
-                }
+                return _birthday;
             }
+            set
+            {
+                _birthday = Regex.Replace($"{value}", @"(\d{2})(\d{2})(\d{4})", "$1/$2/$3");
+            }
+        }
         //here is our default and perameratized constructor
-            public Contact()
+        public Contact()
             {
 
             }
-            public Contact(string firstName, string lastName, string phoneNumber, string streetAdd, string city, string state, string zip, string birthdayDay, IEnumerable<Category> catID)
+            public Contact(string firstName, string lastName, string phoneNumber, string streetAdd, string city, string state, string zip, /*IEnumerable<Date>*/string birthdayDay, IEnumerable<Category> catID)
             {
                 this.FirstName = firstName;
                 this.LastName = lastName;
-                this.NumberFormatted = phoneNumber;
+                this.PhoneNumber = phoneNumber;
                 this.StreetAddress = streetAdd;
                 this.City = city;
                 this.State = state;
                 this.Zip = zip;
-                this.BirthdayFormatted = birthdayDay;
+                this.Birthday = birthdayDay;
                 this.CategoryID = catID;
             }
 

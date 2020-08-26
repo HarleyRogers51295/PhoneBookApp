@@ -11,6 +11,7 @@ namespace ContactsListApp.Models
 {
     public class ContactsRepository : IContactRepository
     {
+           
 
         //conection methods
         private readonly IDbConnection _connection;
@@ -25,7 +26,7 @@ namespace ContactsListApp.Models
         {
             var categoryList = GetCategories();
             var contact = new Contact();
-            contact.CategoryID = categoryList;
+            contact.CategoryName = categoryList;
 
             return contact;
         }
@@ -39,8 +40,13 @@ namespace ContactsListApp.Models
         //displays all contacts
         public IEnumerable<Contact> GetAllContacts()
         {
-            var depos = _connection.Query<Contact>("SELECT * FROM contacts ORDER BY categoryID DESC");
-            return depos;
+            var depos = _connection.Query<Contact>("SELECT * FROM contacts LEFT JOIN categories ON contacts.CategoryName = categories.categoryName ORDER BY categoryID DESC");
+            return depos;   //SELECT * FROM contacts FULL OUTER JOIN categories ON contacts.categoryID = categories.categoryID ORDER BY contacts.categoryID DESC
+        }
+        public IEnumerable<Contact> GetAllCategories()
+        {
+            var depos = _connection.Query<Contact>("SELECT * FROM categories ORDER BY categoryID DESC");
+            return depos;  
         }
 
         //displays one contact
@@ -53,37 +59,41 @@ namespace ContactsListApp.Models
         //creates a contact
         public void CreateContact(Contact contactToInsert)
         {
-            _connection.Execute("INSERT INTO contacts (FirstName, LastName, PhoneNumber, StreetAddress, City, State, Zip, Birthday, CategoryID) " +
-                "VALUES (@firstName, @lastName, @phoneNumber, @streetAddress, @city, @state, @zip, @birthday, @categoryID)", 
+            _connection.Execute("INSERT INTO contacts (FirstName, LastName, PhoneNumber, StreetAddress, City, State, Zip, Birthday, CategoryID, CategoryName) " +
+                "VALUES (@firstName, @lastName, @phoneNumber, @streetAddress, @city, @state, @zip, @birthday, @categoryID, @categoryName)", 
                  new
                  {
                      firstName = contactToInsert.FirstName,
                      lastName = contactToInsert.LastName,
-                     phoneNumber = contactToInsert.NumberFormatted,
+                     phoneNumber = contactToInsert.PhoneNumber,
                      streetAddress = contactToInsert.StreetAddress,
                      city = contactToInsert.City,
                      state = contactToInsert.State,
                      zip = contactToInsert.Zip,
-                     birthday = contactToInsert.BirthdayFormatted,
-                     categoryID = contactToInsert.CategoryID
+                     birthday = contactToInsert.Birthday,
+                     categoryID = contactToInsert.CategoryID,
+                     categoryName = contactToInsert.CategoryName
                  });
         }
         //updates the selected contact
         public void UpdateContact(Contact contact)
         {
             _connection.Execute($"UPDATE contacts SET FirstName = @firstName, LastName = @lastName, PhoneNumber = @phoneNumber, StreetAddress = @streetAddress, " +
-                $"City = @city, State = @state, Zip = @zip, Birthday = @birthday, CategoryID = @categoryID WHERE ID = @id",
+                $"City = @city, State = @state, Zip = @zip, Birthday = @birthday, CategoryID = @categoryID, CategoryName = @categoryName WHERE ID = @id",
                 new
                 {
                     firstName = contact.FirstName,
                     lastName = contact.LastName,
-                    phoneNumber = contact.NumberFormatted,
+                    phoneNumber = contact.PhoneNumber,
                     streetAddress = contact.StreetAddress,
                     city = contact.City,
                     state = contact.State,
                     zip = contact.Zip,
-                    birthday = contact.BirthdayFormatted,
-                    categoryID = contact.CategoryID
+                    birthday = contact.Birthday,
+                    categoryID = contact.CategoryID,
+                    categoryName = contact.CategoryName,
+                    id = contact.ID
+
                 });
         }
 

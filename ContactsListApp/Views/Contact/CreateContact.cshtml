@@ -7,8 +7,8 @@
     <input type="text" name="FirstName" class="form-control" value="" />
     <label asp-for="LastName" class="control-label">Last Name</label>
     <input type="text" name="LastName" class="form-control" value="" />
-    <label asp-for="NumberFormatted" class="control-label">Phone Number</label>
-    <input type="number" name="NumberFormatted" class="form-control" />
+    <label asp-for="PhoneNumber" class="control-label">Phone Number</label>
+    <input type="text" name="PhoneNumber" class="form-control" />
     <label asp-for="StreetAddress" class="control-label">Street</label>
     <input type="text" name="StreetAddress" class="form-control" value="" />
     <label asp-for="City" class="control-label">City</label>
@@ -17,20 +17,21 @@
     <input type="text" name="State" class="form-control" value="" />
     <label asp-for="Zip" class="control-label">Zip Code</label>
     <input type="text" name="Zip" class="form-control" value="" />
-    <label asp-for="BirthdayFormatted" class="control-label">Birthday</label>
-    <input type="number" name="BirthdayFormatted" class="form-control" value="" />
-    <label asp-for="CategoryID" class="control-label">Relation</label>
-    <input type="number" name="CategoryID" class="form-control" value="" />
+    <label asp-for="Birthday" class="control-label">Birthday</label>
+    <input type="text" name="Birthday" class="form-control" value="" />
+  
 
     <div class="form-group">
 
-        <label for="">Select a Category</label>
-        <select class="form-control" name="CategoryID" value="">
-            @foreach (var cat in Model.CategoryID)
+        <label asp-for="CategoryName">Select a Relation</label>
+        <select class="form-control" name="CategoryName" value="">
+            @foreach (var cat in Model.CategoryName)
             {
-                <option value="@cat.CategoryID">@cat.CategoryID @cat.Name</option>
+            <option value="@cat.CategoryID">@cat.CategoryID. @cat.CategoryName</option>
             }
         </select>
     </div>
     <input type="submit" value="Create Contact" class="btn btn-primary" />
 }
+
+

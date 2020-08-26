@@ -1,37 +1,41 @@
 ﻿@model IEnumerable<Contact>
 
+
 <h2>Contacts</h2>
-<div style="display: block">
+<div style="display: block" class="table1">
     <a href="/Contact/CreateContact/">Create a New Contact</a>
 </div>
 
+<div class="table1">
+    <table class="table">
+        <tr>
+            <td>Contact ID</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Phone Number</td>
+            <td>Street Address</td>
+            <td>City</td>
+            <td>State</td>
+            <td>Zip Code</td>
+            <td>Birthday</td>
+            <td>Relation</td>
 
-<table class="table">
-    <tr>
-        <td>Contact ID</td>
-        <td>First Name</td>
-        <td>Last Name</td>
-        <td>Phone Number</td>
-        <td>Street Address</td>
-        <td>City</td>
-        <td>State</td>
-        <td>Zip Code</td>
-        <td>Birthday</td>
-        <td>Relation</td>
-    </tr>
-    @foreach (var contact in Model)
-    {
-<tr>
-    <td><a href=/Contact/ViewContact/@contact.ID>@contact.ID</a></td>
-    <td>@contact.FirstName</td>
-    <td>@contact.LastName</td>
-    <td>@contact.NumberFormatted</td>
-    <td>@contact.StreetAddress</td>
-    <td>@contact.City</td>
-    <td>@contact.State</td>
-    <td>@contact.Zip</td>
-    <td>@contact.BirthdayFormatted</td>
-    <td>@contact.CategoryID</td>
-</tr>
-    }
-</table>
+        </tr>
+        @foreach (var contact in Model)
+        {
+            <tr>
+                <td><a href=/Contact/ViewContact/@contact.ID>@contact.ID</a></td>
+                <td>@contact.FirstName</td>
+                <td>@contact.LastName</td>
+                <td>@contact.PhoneNumber</td>
+                <td>@contact.StreetAddress</td>
+                <td>@contact.City</td>
+                <td>@contact.State</td>
+                <td>@contact.Zip</td>
+                <td>@contact.Birthday</td>
+                <td>@contact.CategoryName</td>
+
+            </tr>
+        }
+    </table>
+</div>

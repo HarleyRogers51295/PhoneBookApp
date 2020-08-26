@@ -14,9 +14,9 @@
 
     <input type="text" name="LastName" class="form-control" value="@Model.LastName" />
 
-    <label asp-for="NumberFormatted" class="control-label">Phone Number</label>
+    <label asp-for="PhoneNumber" class="control-label">Phone Number</label>
 
-    <input type="number" name="NumberFormatted" class="form-control" value="@Model.NumberFormatted" />
+    <input type="text" name="PhoneNumber" class="form-control" value="@Model.PhoneNumber" />
 
     <label asp-for="StreetAddress" class="control-label">Street</label>
 
@@ -34,14 +34,28 @@
 
     <input type="text" name="Zip" class="form-control" value="@Model.Zip" />
 
-    <label asp-for="BirthdayFormatted" class="control-label">Birthday</label>
+    <label asp-for="Birthday" class="control-label">Birthday</label>
 
-    <input type="number" name="BirthdayFormatted" class="form-control" value="@Model.BirthdayFormatted" />
+    <input type="text" name="Birthday" class="form-control" value="@Model.Birthday" />
 
-    <label asp-for="CategoryID" class="control-label">Relation</label>
+    @*<label asp-for="CategoryName" class="control-label">Relation</label>
 
-    <input type="text" name="CategoryID" class="form-control" value="@Model.CategoryID" />
+    <input type="text" name="CategoryName" class="form-control" value="@Model.CategoryName" />*@
+
+
+    <div class="form-group">
+
+            <label for="">Select a Relation</label>
+            <select class="form-control" name="CategoryName" value="@Model.CategoryName">
+                @foreach (var cat in Model.CategoryName)
+                {
+                <option value="@cat.CategoryID">@cat.CategoryID. @cat.CategoryName</option>
+                }
+            </select>
+        </div>
 
     <input type="submit" value="Update Contact" class="btn btn-primary" />
 
+
 }
+

@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace ContactsListApp.Models
 {
-    public class Category
+    public class Date
     {
-        public int CategoryID { get; set; }
-        public string CategoryName { get; set; }
+        
+        public DateTime JoinDate { get; set; }
+
 
     }
 }
